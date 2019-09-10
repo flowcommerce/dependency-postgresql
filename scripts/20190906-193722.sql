@@ -5,6 +5,7 @@ set search_path to public;
 create table tasks (
   id                          text primary key check(util.non_empty_trimmed_string(id)),
   data                        text not null check(util.non_empty_trimmed_string(data)),
+  priority                    bigint not null check(priority >= 0),
   num_attempts                bigint not null check(num_attempts >= 0),
   processed_at                timestamptz,
   created_at                  timestamptz not null default now(),
