@@ -1,4 +1,4 @@
-FROM flowdocker/postgresql:0.0.87
+FROM flowdocker/postgresql:0.1.63
 
 ADD . /opt/schema
 WORKDIR /opt/schema
@@ -11,4 +11,4 @@ RUN echo "service postgresql stop" >> /opt/run.sh
 RUN sh /opt/run.sh
 
 USER "postgres"
-CMD ["/usr/lib/postgresql/10/bin/postgres", "-i", "-D", "/var/lib/postgresql/10/main"]
+CMD ["/usr/lib/postgresql/11/bin/postgres", "-i", "-D", "/var/lib/postgresql/11/main"]
