@@ -1,0 +1,10 @@
+# for caching, see: http://www.scala-sbt.org/0.13/docs/Travis-CI-with-sbt.html
+# sudo:false necessary for travis container-based infra, allowing caching
+sudo: false
+services:
+  - docker
+script:
+  - docker build .
+branches:
+  only:
+    - master
