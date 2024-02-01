@@ -2361,14 +2361,6 @@ FOREACH v_id IN ARRAY p_partition_ids LOOP
             , v_partition_name
             , v_parent_schema
             , v_parent_tablename);
-    SELECT relhasoids INTO v_hasoids
-    FROM pg_catalog.pg_class c
-    JOIN pg_catalog.pg_namespace n ON c.relnamespace = n.oid
-    WHERE c.relname = v_parent_tablename
-    AND n.nspname = v_parent_schema;
-    IF v_hasoids IS TRUE THEN
-        v_sql := v_sql || ' WITH (OIDS)';
-    END IF;
     EXECUTE v_sql;
     IF v_parent_tablespace IS NOT NULL THEN
         EXECUTE format('ALTER TABLE %I.%I SET TABLESPACE %I', v_parent_schema, v_partition_name, v_parent_tablespace);
@@ -2694,14 +2686,6 @@ FOREACH v_time IN ARRAY p_partition_times LOOP
                                 , v_partition_name
                                 , v_parent_schema
                                 , v_parent_tablename);
-    SELECT relhasoids INTO v_hasoids
-    FROM pg_catalog.pg_class c
-    JOIN pg_catalog.pg_namespace n ON c.relnamespace = n.oid
-    WHERE c.relname = v_parent_tablename
-    AND n.nspname = v_parent_schema;
-    IF v_hasoids IS TRUE THEN
-        v_sql := v_sql || ' WITH (OIDS)';
-    END IF;
     EXECUTE v_sql;
     IF v_parent_tablespace IS NOT NULL THEN
         EXECUTE format('ALTER TABLE %I.%I SET TABLESPACE %I', v_parent_schema, v_partition_name, v_parent_tablespace);
