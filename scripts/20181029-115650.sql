@@ -1,4 +1,4 @@
-create or replace function journal.quote_column(name in varchar) returns varchar language plpgsql as $$
+create or replace function journal.quote_column(name in information_schema.sql_identifier) returns text language plpgsql as $$
 begin
   return '"' || name || '"';
 end;
