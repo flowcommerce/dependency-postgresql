@@ -1,0 +1,1 @@
+skeletonPGPipeline(repository: 'dependency-postgresql')
