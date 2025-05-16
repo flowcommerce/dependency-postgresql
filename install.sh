@@ -19,7 +19,6 @@ then
 	psql -q -U postgres -d postgres -c "GRANT ALL ON DATABASE $DBNAME TO api"
 	psql -q -U postgres -d $DBNAME -f $DBNAME.schema.sql
 	psql -q -U postgres -d $DBNAME -f $DBNAME.data.sql
-	psql -q -U api -d $DBNAME -c 'SELECT partman5.run_maintenance()'
 fi
 
 sem-apply --url postgresql://api@localhost/$DBNAME
