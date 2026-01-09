@@ -1,4 +1,4 @@
-FROM flowdocker/postgresql15:latest
+FROM 479720515435.dkr.ecr.us-east-1.amazonaws.com/flowcommerce/postgresql15:latest
 
 ADD . /opt/schema
 WORKDIR /opt/schema
